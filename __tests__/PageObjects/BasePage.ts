@@ -4,11 +4,11 @@ import {
     Capabilities,
     until,
     WebDriver,
-    WebElement,
+    WebElement
   } from "selenium-webdriver";
-  const fs = require("fs");
+  
   const chromedriver = require("chromedriver");
-  const geckodriver = require("geckodriver");
+  
   
   /** Optional parameters for the page object */
   interface Options {
@@ -107,24 +107,10 @@ import {
       await this.driver.wait(until.elementIsEnabled(element));
       return element.getAttribute(attribute);
     }
-    /**
-     * Will take a screenshot and save it to the filepath/filename provided.
-     * Automatically saves as a .png file.
-     * @param {string} filepath - the filepath relative to the project's base folder where you want the screenshot saved
-     * @example
-     * page.takeScreenshot("myFolder/mypic")
-     * //picture saves in "myFolder" as "mypic.png"
-     */
-    async takeScreenshot(filepath: string) {
-      fs.writeFile(
-        `${filepath}.png`,
-        await this.driver.takeScreenshot(),
-        "base64",
-        (e) => {
-          if (e) console.log(e);
-          else console.log("screenshot saved successfully");
-        }
-      );
+    async sendKeys(elementBy: By, keys) {
+      await this.driver.wait(until.elementLocated(elementBy));
+      return this.driver.findElement(elementBy).sendKeys(keys);
     }
-  }
+   }
+  
   
