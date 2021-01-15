@@ -1,4 +1,13 @@
-
+import {
+  Builder,
+  By,
+  Capabilities,
+  until,
+  WebDriver,
+  WebElement
+  
+} from "selenium-webdriver"
+const chromedriver = require("chromedriver");
 
  
   import {BasePage} from "./BasePage";
@@ -14,7 +23,7 @@
       addPassword: By = By.element('input[autocomplete="new-password"]')
       //clicks the set Password button
       setPassword: By = By.id('#password')
-      //shows the popUP
+      //shows the 50% off popUP
       popUp: By = By.xpath('//div[@class="u-flex u-flex-col u-bg-white u-rounded-4 u-m-auto u-relative _1ivBsHCOh3N7wt6s01Kjqj _1o5gMN69zQnHFzMZNJfAGX"]')
       //Seaches for a particular dress
       Results: By = By.xpath('(//a[@class="WCdF1-WeVI0oEKb0AIa4c"])[1]')
@@ -72,7 +81,7 @@
      /**
      * Tests whether the home page's navigation menu is expanded. 
      */
-      async HomepageDisplayed() {
+      async PopupDisplayed() {
         await this.driver.wait(until.elementLocated(this.popUp))
         let HomepageDisplayed: boolean = await this.driver.findElement(By.className("popUp")).isDisplayed();
         return HomepageDisplayed;

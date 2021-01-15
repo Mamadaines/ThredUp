@@ -4,9 +4,11 @@ import {
   Capabilities,
   until,
   WebDriver,
-  WebElement,
+  WebElement
+  
 } from "selenium-webdriver"
 const chromedriver = require("chromedriver");
+
 
 /** Optional parameters for the page object */
 interface Options {
@@ -87,19 +89,6 @@ export class BasePage {
   async getAttribute(elementBy: By, attribute: string): Promise<string> {
       return (await this.getElement(elementBy)).getAttribute(attribute);
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   async anotherClick(elementBy: By) {
       let myElement = await this.driver.wait(until.elementLocated(elementBy))
